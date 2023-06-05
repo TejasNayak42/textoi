@@ -2,6 +2,10 @@ import React from 'react'
 
 export default function Form() {
   return (
-    <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate facere officia quis quasi neque laboriosam natus amet sunt! A eius consectetur eaque in saepe, libero explicabo unde maxime eveniet maiores!</div>
-  )
+      <>
+      <div className="textform mt-5 ml-7">
+        <textarea className='max-[400x]:hidden  border-[2px] border-black rounded-md ' cols="35" rows="6"></textarea>
+      </div>
+      </>
+    )
 }
