@@ -1,8 +1,12 @@
-import React, { useState,useRef } from 'react';
+import React, { useState,useRef,useEffect } from 'react';
+
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+
 
 
 export default function Form() {
   const textareaRef = useRef(null);
+  // const [isListening, setIsListening]=useState(false);
   const handleUP = () => {
     let newText = text.toUpperCase();
     setText(newText);
@@ -38,13 +42,35 @@ export default function Form() {
     setText(newText);
   };
 
+
+const commands = [
+  {
+    command: 'clear',
+    callback: () => setText(''),
+  },
+];
+
+const {
+  transcript
+} = useSpeechRecognition({ commands });
+
+useEffect(() => {
+  if (transcript) {
+    setText(transcript);
+  }
+}, [transcript]);
+
+
+   
   const onHandled = (event) => {
     setText(event.target.value);
   };
 
   const [text, setText] = useState('');
+  
   return (
       <>
+
       <div className="  textform mt-5 ml-7">
         <h2 className='font-semibold max-[398px]:ml-4 mb-1'>Enter text below :</h2>
         <textarea className=" w-[90%] ml-1 border-[2px] border-black rounded-md md:ml-16  " 
@@ -55,6 +81,14 @@ export default function Form() {
         ></textarea>
       </div>
       <div className="buttons flex max-[398px]:flex-col  ">
+      <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
+          max-[398px]:hidden
+          md:'
+          onClick={SpeechRecognition.startListening}
+        >
+          Text to speech
+        </button> 
+
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8 
           md:'
