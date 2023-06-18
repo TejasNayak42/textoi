@@ -28,34 +28,64 @@ export default function About() {
           4. Remove Extra Space:
         </li>
         <span className="mb-3">Achieve a clean and coordinated look by eliminating unnecessary spaces between words and sentences.</span> 
-        <li className='font-[500] tracking-[0.01rem] mb-1 mt-3'>
-          5. Again:
-        </li>
-         <span className="mb-3">Refine your text once more, ensuring a polished and aesthetically pleasing result.</span>
+      </ul>
+      
+      <p className='text-center'>
+        <h3 className="font-[500] mt-3 ">
+          Copy to Clipboard:
+        </h3>
+          Seamlessly copy the contents of your text area to your clipboard, allowing for easy sharing or pasting elsewhere.
+      </p> 
 
+      <p className="text-center">
+        <h3 className="font-[500] mt-3 ">
+          Clear:
+        </h3> 
+          Quickly and effortlessly remove all text from the text area, providing a fresh canvas for your next creative endeavor.
+      </p>
+
+      <h2 className='font-[700]'>
+        Get a Summary:
+      </h2>
+      <span className='mb-2'>
+        Textoi also offers a powerful summary feature that provides insightful information about your text:
+      </span>
+      <ul className="">
+        <li className="">
+          <h4 className="font-[500] mb-1">
+            - Word Count:
+          </h4> Discover how many words are present in your text, allowing you to gauge the length and complexity of your content.
+        </li>
+        <li className="">
+          <h4 className="font-[500] mb-1">
+            - Character Count:
+          </h4> Understand the total number of characters in your text, helping you assess its brevity or detail.
+        </li>
+        <li className="">
+          <h4 className="font-[500] mb-1">
+            - Reading Time:
+          </h4> Estimate the time it would take for an average person to read your text, enabling you to optimize readability and engagement.
+        </li>
       </ul>
 
-Copy to Clipboard: Seamlessly copy the contents of your text area to your clipboard, allowing for easy sharing or pasting elsewhere.
+      <h2 className='font-[700] mt-3'>
+        Responsive Design:
+      </h2>
+      <p className="">
+        Textoi is designed to cater to both mobile and desktop users. While the mobile version may have slight differences in layout, it offers the same powerful features and seamless user experience as the desktop version.
+      </p>
 
-Clear: Quickly and effortlessly remove all text from the text area, providing a fresh canvas for your next creative endeavor.
 
-Get a Summary:
+      <h2 className='font-[700] mt-3'>
+        Experience the User-Friendly UI:
+      </h2>
+      <p className="">
+        We have carefully crafted Textoi's user interface to provide a delightful and intuitive experience. With its sleek and modern design, we aim to make your text manipulation and decoration journey effortless and enjoyable.
+      </p>
 
-Textoi also offers a powerful summary feature that provides insightful information about your text:
-
-- Word Count: Discover how many words are present in your text, allowing you to gauge the length and complexity of your content.
-- Character Count: Understand the total number of characters in your text, helping you assess its brevity or detail.
-- Reading Time: Estimate the time it would take for an average person to read your text, enabling you to optimize readability and engagement.
-
-Responsive Design:
-
-Textoi is designed to cater to both mobile and desktop users. While the mobile version may have slight differences in layout, it offers the same powerful features and seamless user experience as the desktop version.
-
-Experience the User-Friendly UI:
-
-We have carefully crafted Textoi's user interface to provide a delightful and intuitive experience. With its sleek and modern design, we aim to make your text manipulation and decoration journey effortless and enjoyable.
-
-Try Textoi today and let your creativity flow as you transform your text into captivating content.
-      </div>
+      <p className="font-[300] mt-4">
+        Try Textoi today and let your creativity flow as you transform your text into captivating content.
+      </p>
+    </div>
   )
 }
