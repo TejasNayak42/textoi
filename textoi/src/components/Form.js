@@ -72,7 +72,8 @@ useEffect(() => {
       <>
 
       <div className="  textform mt-5 ml-7">
-        <h2 className='font-semibold max-[398px]:ml-4 mb-1'>Enter text below :</h2>
+        <h2 className='font-semibold 
+        max-[398px]:ml-4 mb-1'>Enter text below :</h2>
         <textarea className=" w-[90%] ml-1 border-[2px] border-black rounded-md md:ml-16  " 
                   ref={textareaRef} 
                   value={text}
@@ -80,10 +81,12 @@ useEffect(() => {
                   cols="35" rows="6"
         ></textarea>
       </div>
-      <div className="buttons flex max-[398px]:flex-col  ">
+      <div className="buttons flex 
+      max-[398px]:flex-col 
+      min-[399px]:flex-row justify-evenly flex-wrap">
       <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:hidden
-          md:'
+          md: ml-5'
           onClick={SpeechRecognition.startListening}
         >
           Text to speech
@@ -91,7 +94,7 @@ useEffect(() => {
 
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8 
-          md:'
+          min-[399px]:'
           onClick={handleUP}
         >
           UpperCase
@@ -136,15 +139,16 @@ useEffect(() => {
         >
           Clear
         </button>
-        <hr className='max-[398px]:mt-2 border'/>
-        <div className="summarycontainer max-[398px]:mt-2 flex justify-center flex-col items-center">
+      </div>
+      <hr className='max-[398px]:mt-2 border'/>
+        <div className="summarycontainer 
+          max-[398px]:mt-2 flex justify-center flex-col items-center
+          md:">
         <p>
           {text.trim() === '' ? 0 : text.trim().split(/\s+/).length} words and {text.length} characters.
         </p>
         <p>Time taken to read: {text.trim() === '' ? 0 : 0.004 * text.trim().split(/\s+/).length} mins</p>
         </div>
-
-      </div>
       </>
     )
 }
