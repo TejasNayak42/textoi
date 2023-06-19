@@ -83,10 +83,10 @@ useEffect(() => {
       </div>
       <div className="buttons flex 
       max-[398px]:flex-col 
-      min-[399px]:flex-row justify-evenly flex-wrap">
+      min-[399px]:flex-row justify-evenly flex-wrap ">
       <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:hidden
-          md: ml-5'
+          md: ml-7'
           onClick={SpeechRecognition.startListening}
         >
           Text to speech
@@ -124,21 +124,24 @@ useEffect(() => {
           SentenceCase
         </button>
 
-        <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
-          max-[398px]:mt-2 mx-8
-          md:'
-          onClick={handleCopy}
-        >
-          CopyToClipboard
-        </button>
+        <div className="buttons2 flex flex-wrap max-[398px]:flex-col min-[399px]:flex-row justify-centers mt-2">
+          <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
+            max-[398px]:mt-2 mx-8
+            md:'
+            onClick={handleCopy}
+          >
+            CopyToClipboard
+          </button>
 
-        <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
-          max-[398px]:mt-2 mx-8
-          md:'
-          onClick={handleClear}
-        >
-          Clear
-        </button>
+          <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
+            max-[398px]:mt-2 mx-8
+            md:'
+            onClick={handleClear}
+          >
+            Clear
+          </button>
+        </div>
+       
       </div>
       <hr className='max-[398px]:mt-2 border'/>
         <div className="summarycontainer 
