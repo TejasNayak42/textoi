@@ -107,7 +107,7 @@ useEffect(() => {
         >
           LowerCase
         </button>
-
+      </div>
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8
           md:'
@@ -123,8 +123,8 @@ useEffect(() => {
         >
           SentenceCase
         </button>
-
-        <div className="buttons2 flex flex-wrap max-[398px]:flex-col min-[399px]:flex-row justify-centers mt-2">
+      {/* </div> */}
+        <div className="buttons2 flex flex-wrap max-[398px]:flex-col min-[399px]:flex-row justify-center mt-4">
           <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
             max-[398px]:mt-2 mx-8
             md:'
@@ -138,12 +138,12 @@ useEffect(() => {
             md:'
             onClick={handleClear}
           >
-            Clear
+            ClearText
           </button>
         </div>
        
-      </div>
-      <hr className='max-[398px]:mt-2 border'/>
+      {/* </div> */}
+      <hr className='max-[398px]:mt-2 border min-[399px]:mt-6 mb-6'/>
         <div className="summarycontainer 
           max-[398px]:mt-2 flex justify-center flex-col items-center
           md:">
