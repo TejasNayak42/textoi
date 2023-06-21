@@ -81,12 +81,12 @@ useEffect(() => {
                   cols="35" rows="6"
         ></textarea>
       </div>
-      <div className="buttons flex 
+      < div className="buttons flex 
       max-[398px]:flex-col 
-      min-[399px]:flex-row justify-evenly flex-wrap ">
+      min-[399px]:flex-row justify-evenly  flex-wrap mt-3">
       <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:hidden
-          md: ml-7'
+          md: ml-7p-[0.25]'
           onClick={SpeechRecognition.startListening}
         >
           Text to speech
@@ -94,7 +94,7 @@ useEffect(() => {
 
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8 
-          min-[399px]:'
+          min-[399px]:p-[0.25]'
           onClick={handleUP}
         >
           UpperCase
@@ -102,15 +102,15 @@ useEffect(() => {
 
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8
-          md:'
+          md:p-[0.25]'
           onClick={handleLow}
         >
           LowerCase
         </button>
-      </div>
+      {/* </div> */}
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8
-          md:'
+          md:p-1'
           onClick={handleExtraSpace}
         >
           RemoveExtraSpaces
@@ -118,16 +118,16 @@ useEffect(() => {
 
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8
-          md:'
+          md:p-[0.25]'
           onClick={handleSC}
         >
           SentenceCase
         </button>
       {/* </div> */}
-        <div className="buttons2 flex flex-wrap max-[398px]:flex-col min-[399px]:flex-row justify-center mt-4">
+        <div className="buttons2 flex flex-wrap max-[398px]:flex-col min-[399px]:flex-row justify-center ">
           <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
-            max-[398px]:mt-2 mx-8
-            md:'
+            max-[398px]:mt-1 mx-8
+            md:p-[0.25]'
             onClick={handleCopy}
           >
             CopyToClipboard
@@ -135,22 +135,24 @@ useEffect(() => {
 
           <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
             max-[398px]:mt-2 mx-8
-            md:'
+            md:p-[0.25]'
             onClick={handleClear}
           >
             ClearText
           </button>
         </div>
        
-      {/* </div> */}
+      </div>
       <hr className='max-[398px]:mt-2 border min-[399px]:mt-6 mb-6'/>
         <div className="summarycontainer 
           max-[398px]:mt-2 flex justify-center flex-col items-center
           md:">
+            <h2 className='font-bold '>Summary</h2>
         <p>
           {text.trim() === '' ? 0 : text.trim().split(/\s+/).length} words and {text.length} characters.
         </p>
         <p>Time taken to read: {text.trim() === '' ? 0 : 0.004 * text.trim().split(/\s+/).length} mins</p>
+        <p>{text.length > 0 ? text : 'Enter text above to preview here'}</p>
         </div>
       </>
     )
