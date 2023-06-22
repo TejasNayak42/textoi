@@ -44,52 +44,53 @@ export default function Form() {
   };
 
 
-const commands = [
-  {
-    command: 'clear',
-    callback: () => setText(''),
-  },
-];
+  const commands = [
+    {
+      command: 'clear',
+      callback: () => setText(''),
+    },
+  ];
 
-const {
-  transcript
-} = useSpeechRecognition({ commands });
+  const {
+    transcript
+  } = useSpeechRecognition({ commands });
 
-useEffect(() => {
-  if (transcript) {
-    setText(transcript);
-  }
-}, [transcript]);
+  useEffect(() => {
+    if (transcript) {
+      setText(transcript);
+    }
+  }, [transcript]);
 
 
-const askForMicrophonePermission = async () => {
-  try {
-    await navigator.mediaDevices.getUserMedia({ audio: true });
-    setMicrophonePermissionGranted(true);
-    SpeechRecognition.startListening();
-    window.alert('Recording started!');
-    setRecording(true);
-  } catch (error) {
-    console.error('Error accessing microphone:', error);
-  }
-};
-
-const handleTextToSpeech = () => {
-  if (isRecording) {
-    SpeechRecognition.stopListening();
-    window.alert('Recording stopped!');
-    setRecording(false);
-  } else if (!isMicrophonePermissionGranted) {
-    askForMicrophonePermission();
-  } else {
-    SpeechRecognition.startListening();
-    window.alert('Recording started!');
-    setRecording(true);
-  }
-};
-  const onHandled = (event) => {
-    setText(event.target.value);
+  const askForMicrophonePermission = async () => {
+    try {
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+      setMicrophonePermissionGranted(true);
+      SpeechRecognition.startListening();
+      window.alert('Recording started!');
+      setRecording(true);
+    } catch (error) {
+      console.error('Error accessing microphone:', error);
+    }
   };
+
+  const handleTextToSpeech = () => {
+    if (isRecording) {
+      SpeechRecognition.stopListening();
+      window.alert('Recording stopped!');
+      setRecording(false);
+    } else if (!isMicrophonePermissionGranted) {
+      askForMicrophonePermission();
+    } else {
+      SpeechRecognition.startListening();
+      window.alert('Recording started!');
+      setRecording(true);
+    }
+  };
+    
+  const onHandled = (event) => {
+      setText(event.target.value);
+    };
 
   return (
       <>
@@ -104,21 +105,22 @@ const handleTextToSpeech = () => {
                   cols="35" rows="6"
         ></textarea>
       </div>
+      
       < div className="buttons flex 
       max-[398px]:flex-col 
       min-[399px]:flex-row justify-evenly  flex-wrap mt-3">
-      <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
+        <button className='bg-sky-600 text-white p-1 rounded-[0.18rem]
           max-[398px]:hidden
-          md: ml-7  '
+          md: ml-7 
+          min-[399px]:bg-sky-600'
           onClick={handleTextToSpeech}
         >
-          {/* {SpeechRecognition.startListening} */}
           Text to speech
         </button> 
 
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8 
-          min-[399px]:  '
+          min-[399px]:bg-sky-600 '
           onClick={handleUP}
         >
           UpperCase
@@ -126,15 +128,15 @@ const handleTextToSpeech = () => {
 
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8
-          min-[399px]: '
+          min-[399px]:bg-sky-600'
           onClick={handleLow}
         >
           LowerCase
         </button>
-      {/* </div> */}
+
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8
-          min-[399px]: '
+          min-[399px]:bg-sky-600 '
           onClick={handleExtraSpace}
         >
           RemoveExtraSpaces
@@ -142,16 +144,16 @@ const handleTextToSpeech = () => {
 
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8
-          min-[399px]: '
+          min-[399px]:bg-sky-600 '
           onClick={handleSC}
         >
           SentenceCase
         </button>
-      {/* </div> */}
+
         <div className="buttons2 flex flex-wrap max-[398px]:flex-col min-[399px]:flex-row justify-center ">
           <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
             max-[398px]:mt-1 mx-8
-            min-[399px]: '
+            min-[399px]:bg-sky-600'
             onClick={handleCopy}
           >
             CopyToClipboard
@@ -159,24 +161,25 @@ const handleTextToSpeech = () => {
 
           <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
             max-[398px]:mt-2 mx-8
-            min-[399px]:  '
+            min-[399px]:bg-sky-600 '
             onClick={handleClear}
           >
             ClearText
           </button>
-        </div>
-       
+        </div>      
       </div>
+
       <hr className='max-[398px]:mt-2 border min-[399px]:mt-6 mb-6'/>
+
         <div className="summarycontainer 
           max-[398px]:mt-2 flex justify-center flex-col items-center
           min-[399px]: ">
-            <h2 className='font-bold '>Summary</h2>
-        <p>
-          {text.trim() === '' ? 0 : text.trim().split(/\s+/).length} words and {text.length} characters.
-        </p>
-        <p>Time taken to read: {text.trim() === '' ? 0 : 0.004 * text.trim().split(/\s+/).length} mins</p>
-        <p>{text.length > 0 ? text : 'Enter text above to preview here'}</p>
+          <h2 className='font-bold '>Summary</h2>
+          <p>
+            {text.trim() === '' ? 0 : text.trim().split(/\s+/).length} words and {text.length} characters.
+          </p>
+          <p>Time taken to read: {text.trim() === '' ? 0 : 0.004 * text.trim().split(/\s+/).length} mins</p>
+          <p>{text.length > 0 ? text : 'Enter text above to preview here'}</p>
         </div>
       </>
     )
