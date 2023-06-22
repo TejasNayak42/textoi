@@ -1,12 +1,13 @@
 import React, { useState,useRef,useEffect } from 'react';
-
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-
-
 
 export default function Form() {
   const textareaRef = useRef(null);
-  // const [isListening, setIsListening]=useState(false);
+  const [text, setText] = useState('');
+  const [isMicrophonePermissionGranted, setMicrophonePermissionGranted] = useState(false);
+  const [isRecording, setRecording] = useState(false);
+
+
   const handleUP = () => {
     let newText = text.toUpperCase();
     setText(newText);
@@ -61,13 +62,35 @@ useEffect(() => {
 }, [transcript]);
 
 
-   
+const askForMicrophonePermission = async () => {
+  try {
+    await navigator.mediaDevices.getUserMedia({ audio: true });
+    setMicrophonePermissionGranted(true);
+    SpeechRecognition.startListening();
+    window.alert('Recording started!');
+    setRecording(true);
+  } catch (error) {
+    console.error('Error accessing microphone:', error);
+  }
+};
+
+const handleTextToSpeech = () => {
+  if (isRecording) {
+    SpeechRecognition.stopListening();
+    window.alert('Recording stopped!');
+    setRecording(false);
+  } else if (!isMicrophonePermissionGranted) {
+    askForMicrophonePermission();
+  } else {
+    SpeechRecognition.startListening();
+    window.alert('Recording started!');
+    setRecording(true);
+  }
+};
   const onHandled = (event) => {
     setText(event.target.value);
   };
 
-  const [text, setText] = useState('');
-  
   return (
       <>
 
@@ -86,15 +109,16 @@ useEffect(() => {
       min-[399px]:flex-row justify-evenly  flex-wrap mt-3">
       <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:hidden
-          md: ml-7p-[0.25]'
-          onClick={SpeechRecognition.startListening}
+          md: ml-7  '
+          onClick={handleTextToSpeech}
         >
+          {/* {SpeechRecognition.startListening} */}
           Text to speech
         </button> 
 
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8 
-          min-[399px]:p-[0.25]'
+          min-[399px]:  '
           onClick={handleUP}
         >
           UpperCase
@@ -102,7 +126,7 @@ useEffect(() => {
 
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8
-          md:p-[0.25]'
+          min-[399px]: '
           onClick={handleLow}
         >
           LowerCase
@@ -110,7 +134,7 @@ useEffect(() => {
       {/* </div> */}
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8
-          md:p-1'
+          min-[399px]: '
           onClick={handleExtraSpace}
         >
           RemoveExtraSpaces
@@ -118,7 +142,7 @@ useEffect(() => {
 
         <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
           max-[398px]:mt-2 mx-8
-          md:p-[0.25]'
+          min-[399px]: '
           onClick={handleSC}
         >
           SentenceCase
@@ -127,7 +151,7 @@ useEffect(() => {
         <div className="buttons2 flex flex-wrap max-[398px]:flex-col min-[399px]:flex-row justify-center ">
           <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
             max-[398px]:mt-1 mx-8
-            md:p-[0.25]'
+            min-[399px]: '
             onClick={handleCopy}
           >
             CopyToClipboard
@@ -135,7 +159,7 @@ useEffect(() => {
 
           <button className='bg-zinc-950 text-white p-1 rounded-[0.18rem]
             max-[398px]:mt-2 mx-8
-            md:p-[0.25]'
+            min-[399px]:  '
             onClick={handleClear}
           >
             ClearText
@@ -146,7 +170,7 @@ useEffect(() => {
       <hr className='max-[398px]:mt-2 border min-[399px]:mt-6 mb-6'/>
         <div className="summarycontainer 
           max-[398px]:mt-2 flex justify-center flex-col items-center
-          md:">
+          min-[399px]: ">
             <h2 className='font-bold '>Summary</h2>
         <p>
           {text.trim() === '' ? 0 : text.trim().split(/\s+/).length} words and {text.length} characters.
